@@ -3,14 +3,17 @@
 [ext_resource type="Script" path="res://scripts/mainPlayer.gd" id="1_xcn50"]
 [ext_resource type="Texture2D" uid="uid://bhr6jyf0gwd1c" path="res://icon.svg" id="2_ifps8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p6mdt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1m2"]
+size = Vector2(20, 22)
 
 [node name="mainPlayer" type="CharacterBody2D"]
 position = Vector2(534, 37)
+scale = Vector2(2.75332, 2.63639)
 script = ExtResource("1_xcn50")
+JUMP_VELOCITY = -1500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_p6mdt")
+shape = SubResource("RectangleShape2D_xd1m2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.170205, 0.181544)
