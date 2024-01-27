@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://bmwjs5lnfsuot"]
+[gd_scene load_steps=6 format=3 uid="uid://bmwjs5lnfsuot"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_kkmwa"]
+[ext_resource type="Texture2D" uid="uid://bhr6jyf0gwd1c" path="res://icon.svg" id="2_ra6n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqswu"]
+size = Vector2(126, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0rxs"]
+size = Vector2(59, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb1o5"]
 
 [node name="mainUI" type="Control"]
 layout_mode = 3
@@ -21,4 +32,39 @@ offset_right = 47.5
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 156
 text = "Hello World!"
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_kkmwa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_ra6n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_uqswu")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(533, 115)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.459504, 0.441394)
+texture = ExtResource("2_ra6n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_r0rxs")
+
+[node name="Plateform" type="StaticBody2D" parent="."]
+position = Vector2(573, 687)
+scale = Vector2(68.8, 4.96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateform"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+shape = SubResource("RectangleShape2D_xb1o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plateform"]
+scale = Vector2(0.15634, 0.158161)
+texture = ExtResource("2_ra6n6")
