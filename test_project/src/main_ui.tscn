@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmwjs5lnfsuot"]
+[gd_scene load_steps=7 format=3 uid="uid://bmwjs5lnfsuot"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_kkmwa"]
 [ext_resource type="Texture2D" uid="uid://bhr6jyf0gwd1c" path="res://icon.svg" id="2_ra6n6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqswu"]
-size = Vector2(126, 125)
+[ext_resource type="PackedScene" uid="uid://dgakaj4jp3ius" path="res://src/Entities/main_player.tscn" id="2_tamgf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0rxs"]
-size = Vector2(59, 55)
+size = Vector2(18, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb1o5"]
+size = Vector2(20.5233, 47.0968)
+
+[sub_resource type="Gradient" id="Gradient_exv24"]
+offsets = PackedFloat32Array(0, 0.15)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jylbb"]
+gradient = SubResource("Gradient_exv24")
 
 [node name="mainUI" type="Control"]
 layout_mode = 3
@@ -35,36 +39,77 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 156
 text = "Hello World!"
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_kkmwa")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_ra6n6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_uqswu")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="object" type="RigidBody2D" parent="."]
 position = Vector2(533, 115)
+mass = 0.03
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.459504, 0.441394)
+[node name="Sprite2D" type="Sprite2D" parent="object"]
+position = Vector2(-21, -18)
+scale = Vector2(0.140625, 0.140625)
 texture = ExtResource("2_ra6n6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.5, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="object"]
+position = Vector2(-21, -18)
 shape = SubResource("RectangleShape2D_r0rxs")
 
 [node name="Plateform" type="StaticBody2D" parent="."]
-position = Vector2(573, 687)
-scale = Vector2(68.8, 4.96)
+position = Vector2(159, 875)
+scale = Vector2(109.06, 18.405)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plateform"]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.014535, -0.161301)
 shape = SubResource("RectangleShape2D_xb1o5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plateform"]
-scale = Vector2(0.15634, 0.158161)
-texture = ExtResource("2_ra6n6")
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.08, 47.088)
+texture = SubResource("GradientTexture1D_jylbb")
+
+[node name="Plateform2" type="StaticBody2D" parent="."]
+position = Vector2(1879, 939)
+scale = Vector2(59.505, 18.357)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateform2"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.014535, -0.161301)
+shape = SubResource("RectangleShape2D_xb1o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plateform2"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.08, 47.088)
+texture = SubResource("GradientTexture1D_jylbb")
+
+[node name="Plateform3" type="StaticBody2D" parent="."]
+position = Vector2(2800, 492)
+scale = Vector2(32.565, 37.437)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateform3"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.014535, -0.161301)
+shape = SubResource("RectangleShape2D_xb1o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plateform3"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.08, 47.088)
+texture = SubResource("GradientTexture1D_jylbb")
+
+[node name="Plateform4" type="StaticBody2D" parent="."]
+position = Vector2(-1039, 433)
+scale = Vector2(32.565, 37.437)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateform4"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.014535, -0.161301)
+shape = SubResource("RectangleShape2D_xb1o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plateform4"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.08, 47.088)
+texture = SubResource("GradientTexture1D_jylbb")
+
+[node name="mainPlayer" parent="." instance=ExtResource("2_tamgf")]
